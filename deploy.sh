@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+echo "=== Terraform Init ==="
+terraform init
+
 echo "=== 1. Uruchamianie Terraform ==="
 terraform apply -auto-approve
 
