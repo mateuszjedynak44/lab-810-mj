@@ -1,21 +1,16 @@
 terraform {
   required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 3.0"
-    }
+    azurerm = { source = "hashicorp/azurerm", version = "~> 3.0" }
   }
 }
-
-provider "azurerm" {
-  features {}
-}
+provider "azurerm" { features {} }
 
 resource "azurerm_resource_group" "rg" {
   name     = "rg-lab-automation-student"
-  location = "switzerlandnorth"
+  location = "westeurope"
 }
 
+# ZADANIE: Zdefiniuj sieć wirtualną (virtual_network) o przestrzeni adresowej ["10.0.0.0/16"]
 resource "azurerm_virtual_network" "vnet" {
   name                = "vnet-lab"
   resource_group_name = azurerm_resource_group.rg.name
@@ -23,6 +18,7 @@ resource "azurerm_virtual_network" "vnet" {
   address_space       = ["10.0.0.0/16"]
 }
 
+# ZADANIE: Zdefiniuj podsieć (subnet) o adresacji ["10.0.1.0/24"] powiązaną z powyższym vnetem
 resource "azurerm_subnet" "subnet" {
   name                 = "subnet-web"
   resource_group_name  = azurerm_resource_group.rg.name
@@ -34,9 +30,7 @@ resource "azurerm_public_ip" "pip" {
   name                = "pip-server"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-
-  allocation_method = "Static"
-  sku               = "Standard"
+  allocation_method   = "Dynamic"
 }
 
 resource "azurerm_network_security_group" "nsg" {
@@ -91,17 +85,13 @@ resource "azurerm_linux_virtual_machine" "vm" {
   name                = "vm-stack-server"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-
-  size           = "Standard_B2ats_v2"
-  admin_username = "azureuser"
-
-  network_interface_ids = [
-    azurerm_network_interface.nic.id
-  ]
+  size                = "Standard_B1s"
+  admin_username      = "azureuser"
+  network_interface_ids = [azurerm_network_interface.nic.id]
 
   admin_ssh_key {
     username   = "azureuser"
-    public_key = file("/home/mateusz/.ssh/id_rsa.pub")
+    public_key = file("~/.ssh/id_rsa.pub")
   }
 
   os_disk {
