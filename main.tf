@@ -99,7 +99,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   admin_ssh_key {
     username   = "azureuser"
-    public_key = file("/home/mateusz/.ssh/id_rsa.pub")
+    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDEKmOo9U4BxcgwnwVKVhCeTkGJTsDEdtauSHMhpzs/sX9zkMLSH6P0V1c78jl1MGByhu84zAwbpJ32AGJBXUR5gLg4+UWHDQPPFhyTR/kc5cfvzhik3sA5oTrFq35/Y9I1pja0whi0kD6LW0eXisOob+xsBzLDsetSrVfWzg5DeMOsLvpW4fJICvRuVGXELsXRnPwrgAH/T7RyjhSZjGx8Mk6ODVk4zt5DREBs0SYPsf+bNjbjhKzAvSp6KbMkWArLXfszrrbWsuY+7C4wcCZSJ9qeaTqGRvC2xOS/JPcdQ8OO7dQuGHTotmiTKjSer6ZJigL+GwewEOksoDSa9ZFIGBZ04NiXQG2nHuskHrdexYQDDmaLS/whb63SX0JnmbksqohViJMmi4cNQpfxiavsH9rzYu77FuwOXpjlU2mS2lAx8zMdtizrBSnfExH5sJh+EF63+7FjWzUDZkkxfcFUK0zenvSvuHswUd1nfD/kLLNQSMx/XihE47GLM88H2Y9fBwJ1AJtbZsHyZOI/04h+Mkd1xYHQ2cvSU9DN8s+neiZkEDgwJgrKLsg4hNPo4Y3nsM/4Xvnd3vTC1VgSzq+WAytlxGeHiFrEn4/IO3zYiJz1RKAwJ1lYdzmdhfhM578RhScKY7Yb4l7ysmQTHDvC5Q3Vof3dQ7yIJzUgAlOiEw== mateusz@SandboxHost-639167583540062240"
   }
 
   os_disk {
