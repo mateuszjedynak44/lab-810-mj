@@ -101,7 +101,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   admin_ssh_key {
     username   = "azureuser"
-    public_key = file("/home/mateusz/.ssh/id_rsa.pub")
+    public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC1WSAZ+gT4Z+/0LQUu2kS70gWayLSCP65BCktLOR8LpDR4kl6/f0TYDpnqKkMmEkRElISh532ChuE9rqPODibEnwDLwOg9Kt5m/kQ8eqAaLMaFc39+PnK0CovWstmD/0PwyIFZuMlsURIA4dM43PmQDqcWryTRYQBO8lr1rdfWXkUZmDulHyW/lHR1pXaEVhEwnbsGxTIUyBC0Nq5i0xITyHYvuGS1qRQ3O63UiVQ81HyTnfWxHmfnSJoLQZh/TKD6CTmsDwA/Q0byonorgX9QbQ3hcYtNEfSWvKZbfQkTkMEXgWZVMJV4qgUH8VyOjB1HZvAq6AJD2GNrXs2aRcwT mateusz@SandboxHost-639167533007437288"
   }
 
   os_disk {
